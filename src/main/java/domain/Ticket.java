@@ -10,6 +10,12 @@ public class Ticket implements Comparable<Ticket> {
     private String to;
     private int travelTime;
 
+    @Override
+    public int compareTo(@NotNull Ticket other) {
+        return this.price - other.price;
+    }
+
+
     public Ticket() {
     }
 
@@ -74,8 +80,5 @@ public class Ticket implements Comparable<Ticket> {
                 '}';
     }
 
-    @Override
-    public int compareTo(@NotNull Ticket o) {
-        return 0;
-    }
+
 }
