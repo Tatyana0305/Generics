@@ -5,6 +5,8 @@ import domain.Ticket;
 
 public class Repository {
     private Ticket[] items = new Ticket[0];
+    private int price;
+
 
     public void save(Ticket item) {
         int length = items.length + 1;

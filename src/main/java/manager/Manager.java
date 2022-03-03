@@ -1,19 +1,14 @@
 package manager;
 
-import domain.NotFoundEx;
 import domain.Ticket;
 import repository.Repository;
 
 public class Manager {
     private Repository repository;
 
+
     public Manager(Repository repository) {
         this.repository = repository;
-    }
-
-    public void removeBiId(int id) throws NotFoundEx {
-        repository.removeById(id);
-        System.out.println("manager done");
     }
 
     public void add(Ticket item) {
@@ -30,11 +25,11 @@ public class Manager {
         return result;
     }
 
-    public Ticket[] searchBy(String text) {
+    public Ticket[] searchByFrom(String text) {
         Ticket[] result = new Ticket[0];
 
         for (Ticket product : repository.findAll()) {
-            if (matches(product, text)) {
+            if (matchesFrom(product, text)) {
                 int length = result.length + 1;
                 Ticket[] tmp = new Ticket[length];
                 System.arraycopy(result, 0, tmp, 0, result.length);
@@ -43,18 +38,49 @@ public class Manager {
                 result = tmp;
             }
         }
+
         return result;
     }
 
 
-    public boolean matches(Ticket product, String search) {
+    public boolean matchesFrom(Ticket product, String search) {
         if (product.getFrom().contains(search)) {
             return true;
         } else {
             return false;
         }
         // или в одну строку:
-        // return product.getName().contains(search);
+        // return product.getFrom().contains(search);
+    }
+
+    public Ticket[] searchByTo(String text) {
+        Ticket[] result = new Ticket[0];
+
+        for (Ticket product : repository.findAll()) {
+            if (matchesTo(product, text)) {
+                int length = result.length + 1;
+                Ticket[] tmp = new Ticket[length];
+                System.arraycopy(result, 0, tmp, 0, result.length);
+                int lastIndex = tmp.length - 1;
+                tmp[lastIndex] = product;
+                result = tmp;
+            }
+        }
+
+        return result;
+
+    }
+
+
+    public boolean matchesTo(Ticket product, String search) {
+        if (product.getTo().contains(search)) {
+            return true;
+        } else {
+            return false;
+        }
+        // или в одну строку:
+        // return product.getTo().contains(search);
     }
 
 }
+
