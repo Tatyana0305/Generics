@@ -24,7 +24,7 @@ class RepositoryTest {
         repository.save(forth);
         repository.save(fifth);
 
-        Ticket[] expected = new Ticket[]{first, second, third, forth, fifth};
+        Ticket[] expected = new Ticket[]{second, forth, third, fifth, first};
         Ticket[] actual = repository.findAll();
 
         assertArrayEquals(expected, actual);
@@ -50,7 +50,7 @@ class RepositoryTest {
         repository.save(forth);
         repository.save(fifth);
 
-        Ticket[] expected = new Ticket[]{first, second, third, forth, fifth};
+        Ticket[] expected = new Ticket[]{second, forth, third, fifth, first};
         Ticket[] actual = repository.findAll();
 
         assertArrayEquals(expected, actual);
@@ -102,7 +102,7 @@ class RepositoryTest {
         repository.removeById(1);
 
 
-        Ticket[] expected = {second, third, forth, fifth};
+        Ticket[] expected = {second, forth, third, fifth};
         Ticket[] actual = repository.findAll();
 
         assertArrayEquals(expected, actual);

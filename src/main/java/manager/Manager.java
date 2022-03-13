@@ -3,6 +3,8 @@ package manager;
 import domain.Ticket;
 import repository.Repository;
 
+import java.util.Arrays;
+
 public class Manager {
     private Repository repository;
 

@@ -31,7 +31,7 @@ class ManagerTest {
 
         repository.removeById(2);
 
-        Ticket[] expected = {first, third, forth, fifth};
+        Ticket[] expected = {forth, third, fifth, first};
         Ticket[] actual = repository.findAll();
 
         assertArrayEquals(expected, actual);
@@ -46,7 +46,7 @@ class ManagerTest {
         manager.add(third);
         manager.add(forth);
 
-        Ticket[] expected = {first, second, third, forth};
+        Ticket[] expected = {second, forth, third, first};
         Ticket[] actual = repository.findAll();
 
         assertArrayEquals(expected, actual);
@@ -95,7 +95,6 @@ class ManagerTest {
         Ticket[] expected = {second, forth, third, first};
         Ticket[] actual = manager.searchByFrom("VKO");
 
-        Arrays.sort(actual);
         assertArrayEquals(expected, actual);
 
     }
@@ -175,7 +174,6 @@ class ManagerTest {
         Ticket[] expected = new Ticket[]{second, forth, third, fifth, first,};
         Ticket[] actual = repository.findAll();
 
-        Arrays.sort(actual);
         assertArrayEquals(expected, actual);
 
     }
