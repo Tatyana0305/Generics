@@ -39,6 +39,7 @@ public class Manager {
                 tmp[lastIndex] = product;
                 result = tmp;
             }
+            Arrays.sort(result);
         }
 
         return result;
@@ -67,6 +68,7 @@ public class Manager {
                 tmp[lastIndex] = product;
                 result = tmp;
             }
+            Arrays.sort(result);
         }
 
         return result;
